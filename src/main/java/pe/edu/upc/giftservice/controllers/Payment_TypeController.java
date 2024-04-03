@@ -32,4 +32,14 @@ public class Payment_TypeController {
             return m.map(y, Payment_TypeDTO.class);
         }).collect(Collectors.toList());
     }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Integer id) {
+        iP.delete(id);
+    }
+    @GetMapping("/buscar")
+    public Payment_TypeDTO listId(@PathVariable("id") Integer id) {
+        ModelMapper m = new ModelMapper();
+        Payment_TypeDTO dto = m.map(iP.listId(id), Payment_TypeDTO.class);
+        return dto;
+    }
 }

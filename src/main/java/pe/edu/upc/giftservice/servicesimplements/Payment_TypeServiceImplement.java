@@ -22,4 +22,14 @@ public class Payment_TypeServiceImplement implements IPayment_TypeService {
     public List<Payment_Type> list() {
         return ptR.findAll();
     }
+
+    @Override
+    public void delete(int id) { ptR.deleteById(id);
+
+    }
+
+    @Override
+    public Payment_Type listId(int id) {
+        return ptR.findById(id).orElse(new Payment_Type());
+    }
 }

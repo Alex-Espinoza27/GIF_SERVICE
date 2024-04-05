@@ -1,6 +1,5 @@
 package pe.edu.pe.giftservice_tipoentrega.controllers;
 
-import jakarta.persistence.Access;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,4 +30,25 @@ public class ShippingMethodController {
             return m.map(y,ShippingMethodDTO.class);
         }).collect(Collectors.toList());
     }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable("id") Integer id) {
+        smS.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    public ShippingMethodDTO listarId(@PathVariable("id") Integer id) {
+        ModelMapper m=new ModelMapper();
+        ShippingMethodDTO dto =m.map(smS.listId(id),ShippingMethodDTO.class);
+        return dto;
+    }
+
+    @GetMapping("/buscarTipoEntrega")
+    public List<ShippingMethodDTO> buscarTipoEntrega(@RequestParam String method) {
+        return smS.findByNameShippingMethod(method).stream().map(y -> {
+            ModelMapper m=new ModelMapper();
+            return m.map(y, ShippingMethodDTO.class);
+        }).collect(Collectors.toList());
+    }
+
 }

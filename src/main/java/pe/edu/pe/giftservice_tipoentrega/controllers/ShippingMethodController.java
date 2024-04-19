@@ -17,14 +17,14 @@ public class ShippingMethodController {
     private IShippingMethodService smS;
 
     @PostMapping
-    public void insertar(@RequestBody ShippingMethodDTO shippingMethodDTO) {
+    public void insertShippingMethod(@RequestBody ShippingMethodDTO shippingMethodDTO) {
         ModelMapper m = new ModelMapper();
         ShippingMethod sm=m.map(shippingMethodDTO, ShippingMethod.class);
         smS.insert(sm);
     }
 
     @GetMapping
-    public List<ShippingMethodDTO> listar() {
+    public List<ShippingMethodDTO> listShippingMethod() {
         return smS.list().stream().map(y->{
             ModelMapper m=new ModelMapper();
             return m.map(y,ShippingMethodDTO.class);
@@ -37,14 +37,14 @@ public class ShippingMethodController {
     }
 
     @GetMapping("/{id}")
-    public ShippingMethodDTO listarId(@PathVariable("id") Integer id) {
+    public ShippingMethodDTO listShippingMethodById(@PathVariable("id") Integer id) {
         ModelMapper m=new ModelMapper();
         ShippingMethodDTO dto =m.map(smS.listId(id),ShippingMethodDTO.class);
         return dto;
     }
 
     @GetMapping("/buscarTipoEntrega")
-    public List<ShippingMethodDTO> buscarTipoEntrega(@RequestParam String method) {
+    public List<ShippingMethodDTO> shearchShippingMethod(@RequestParam String method) {
         return smS.findByNameShippingMethod(method).stream().map(y -> {
             ModelMapper m=new ModelMapper();
             return m.map(y, ShippingMethodDTO.class);

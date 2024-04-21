@@ -20,7 +20,7 @@ public class EntrepreneurshipDTO {
     }
 
     public void setNameEntrepreneurship(String nameEntrepreneurship) {
-        this.nameEntrepreneurship = nameEntrepreneurship;
+        this.nameEntrepreneurship =  nameEntrepreneurship;
     }
 
     public String getRucEntrepreneurship() {

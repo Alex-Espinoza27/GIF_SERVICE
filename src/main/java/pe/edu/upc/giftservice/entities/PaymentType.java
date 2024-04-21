@@ -3,8 +3,8 @@ package pe.edu.upc.giftservice.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Payment_Type")
-public class Payment_Type {
+@Table(name = "PaymentType")
+public class PaymentType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPayment_Type;
@@ -12,10 +12,11 @@ public class Payment_Type {
     @Column(name = "namePayment_Type", nullable = false, length = 50)
     private String namePayment_Type;
 
-    public Payment_Type() {
+
+    public PaymentType() {
     }
 
-    public Payment_Type(int idPayment_Type, String namePayment_Type) {
+    public PaymentType(int idPayment_Type, String namePayment_Type) {
         this.idPayment_Type = idPayment_Type;
         this.namePayment_Type = namePayment_Type;
     }

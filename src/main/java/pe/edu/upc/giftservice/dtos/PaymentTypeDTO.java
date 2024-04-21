@@ -1,6 +1,6 @@
 package pe.edu.upc.giftservice.dtos;
 
-public class Payment_TypeDTO {
+public class PaymentTypeDTO {
     private int idPayment_Type;
     private  String namePayment_Type;
 

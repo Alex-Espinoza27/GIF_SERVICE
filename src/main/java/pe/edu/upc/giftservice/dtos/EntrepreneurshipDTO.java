@@ -2,7 +2,7 @@ package pe.edu.upc.giftservice.dtos;
 
 public class EntrepreneurshipDTO {
     private Long id;
-    private String nameEntrepreneurship;
+    private String nameEntrepreneurship ;
     private String rucEntrepreneurship;
     private String locationEntrepreneurship;
     private String phoneEntrepreneurship;

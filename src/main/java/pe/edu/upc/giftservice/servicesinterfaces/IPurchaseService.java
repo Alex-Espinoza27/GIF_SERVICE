@@ -11,5 +11,4 @@ public interface IPurchaseService {
 
     public void delete(int id);
 
-
 }

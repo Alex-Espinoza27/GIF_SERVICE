@@ -10,4 +10,6 @@ public interface IPurchaseDetailService {
     public PurchaseDetail getById(int id);
     public void update(PurchaseDetail purchaseDetail);
     public void delete(int id);
+    public List<String[]> quantityPurchaseByEntrepreneurship();
+
 }

@@ -37,5 +37,9 @@ public class PurchaseDetailServiceImplement implements IPurchaseDetailService {
     public void delete(int id) {
         pdR.deleteById(id);
     }
+    @Override
+    public List<String[]> quantityPurchaseByEntrepreneurship() {
+        return pdR.quantityPurchaseByEntrepreneurship();
+    }
 
 }

@@ -3,10 +3,12 @@ package pe.edu.upc.giftservice.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.giftservice.dtos.PurchaseByEntrepreneurshipDTO;
 import pe.edu.upc.giftservice.dtos.PurchaseDetailDTO;
 import pe.edu.upc.giftservice.entities.PurchaseDetail;
 import pe.edu.upc.giftservice.servicesinterfaces.IPurchaseDetailService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,5 +50,18 @@ public class PurchaseDetailController {
         ModelMapper m = new ModelMapper();
         PurchaseDetail e = pdS.getById(id);
         return m.map(e, PurchaseDetailDTO.class);
+    }
+
+    @GetMapping("/cantidaddecomprasporEmprendimiento")
+    public List<PurchaseByEntrepreneurshipDTO> quantityPurchaseByEntrepreneurship(){
+        List<String[]> filaLista=pdS.quantityPurchaseByEntrepreneurship();
+        List<PurchaseByEntrepreneurshipDTO> dtoLista=new ArrayList<>();
+        for(String[] columna:filaLista){
+            PurchaseByEntrepreneurshipDTO dto=new PurchaseByEntrepreneurshipDTO();
+            dto.setNameEntrepreneurship(columna[0]);
+            dto.setQuantityPurchaseD(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
     }
 }

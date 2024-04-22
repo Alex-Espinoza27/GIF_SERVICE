@@ -17,5 +17,11 @@ public interface IPurchaseDetailRepository extends JpaRepository<PurchaseDetail,
             "INNER JOIN purchase_detail pd ON e.id = pd.product_id \n" +
             "GROUP BY e.name_entrepreneurship;",nativeQuery = true)
     public List<String[]> quantityPurchaseByEntrepreneurship();
+    @Query(value = "SELECT e.name_entrepreneurship AS EntrepreneurshipName,\tsum(pd.ctotal_purchase_detail) AS TotalSales \n" +
+            "FROM entrepreneurships e \n" +
+            "INNER JOIN Product p ON e.id = p.entrepreneurship_id \n" +
+            "INNER JOIN purchase_detail pd ON e.id = pd.product_id \n" +
+            "GROUP BY e.name_entrepreneurship", nativeQuery = true)
+    public List<String[]> TotalAmountByEntrepreneurship();
 
 }

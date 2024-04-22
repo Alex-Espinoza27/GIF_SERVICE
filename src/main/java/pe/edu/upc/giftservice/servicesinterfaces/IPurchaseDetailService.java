@@ -11,5 +11,6 @@ public interface IPurchaseDetailService {
     public void update(PurchaseDetail purchaseDetail);
     public void delete(int id);
     public List<String[]> quantityPurchaseByEntrepreneurship();
+    public List<String[]> TotalAmountByEntrepreneurship();
 
 }

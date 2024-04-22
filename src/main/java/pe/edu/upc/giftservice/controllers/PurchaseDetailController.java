@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.giftservice.dtos.PurchaseByEntrepreneurshipDTO;
 import pe.edu.upc.giftservice.dtos.PurchaseDetailDTO;
+import pe.edu.upc.giftservice.dtos.TotalAmountByEntrepreneurshipDTO;
 import pe.edu.upc.giftservice.entities.PurchaseDetail;
 import pe.edu.upc.giftservice.servicesinterfaces.IPurchaseDetailService;
 
@@ -60,6 +61,20 @@ public class PurchaseDetailController {
             PurchaseByEntrepreneurshipDTO dto=new PurchaseByEntrepreneurshipDTO();
             dto.setNameEntrepreneurship(columna[0]);
             dto.setQuantityPurchaseD(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
+    @GetMapping("/montodeventasporEmprendimiento")
+    //@PreAuthorize("hasAnyAuthority('USUARIO')")
+    public List<TotalAmountByEntrepreneurshipDTO> monto(){
+        List<String[]> filaLista= pdS.TotalAmountByEntrepreneurship();
+        List<TotalAmountByEntrepreneurshipDTO> dtoLista=new ArrayList<>();
+        for(String [] columna:filaLista){
+            TotalAmountByEntrepreneurshipDTO dto=new TotalAmountByEntrepreneurshipDTO();
+            dto.setNameEntrepreneurship(columna[0]);
+            dto.setTotalAmount(Double.parseDouble(columna[1]));
             dtoLista.add(dto);
         }
         return dtoLista;

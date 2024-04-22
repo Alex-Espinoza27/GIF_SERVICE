@@ -41,5 +41,8 @@ public class PurchaseDetailServiceImplement implements IPurchaseDetailService {
     public List<String[]> quantityPurchaseByEntrepreneurship() {
         return pdR.quantityPurchaseByEntrepreneurship();
     }
-
+    @Override
+    public List<String[]> TotalAmountByEntrepreneurship() {
+        return pdR.TotalAmountByEntrepreneurship();
+    }
 }

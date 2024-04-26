@@ -12,12 +12,17 @@ public class Role {
     @Column(name = "RoleName", nullable = false, length = 20)
     private String RoleName;
 
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private Users usEr;
+
     public Role(){
     }
 
-    public Role(int idRole, String roleName) {
+    public Role(int idRole, String roleName, Users usEr) {
         this.idRole = idRole;
-        this.RoleName = roleName;
+        RoleName = roleName;
+        this.usEr = usEr;
     }
 
     public int getIdRole() {
@@ -34,5 +39,13 @@ public class Role {
 
     public void setRoleName(String roleName) {
         RoleName = roleName;
+    }
+
+    public Users getUsEr() {
+        return usEr;
+    }
+
+    public void setUsEr(Users usEr) {
+        this.usEr = usEr;
     }
 }

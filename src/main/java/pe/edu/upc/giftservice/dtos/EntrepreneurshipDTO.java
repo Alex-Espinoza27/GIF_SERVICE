@@ -1,11 +1,14 @@
 package pe.edu.upc.giftservice.dtos;
 
+import pe.edu.upc.giftservice.entities.Users;
+
 public class EntrepreneurshipDTO {
     private Long id;
     private String nameEntrepreneurship;
     private String rucEntrepreneurship;
     private String locationEntrepreneurship;
     private String phoneEntrepreneurship;
+    private Users users;
 
     public Long getId() {
         return id;
@@ -20,7 +23,7 @@ public class EntrepreneurshipDTO {
     }
 
     public void setNameEntrepreneurship(String nameEntrepreneurship) {
-        this.nameEntrepreneurship =  nameEntrepreneurship;
+        this.nameEntrepreneurship = nameEntrepreneurship;
     }
 
     public String getRucEntrepreneurship() {
@@ -45,5 +48,13 @@ public class EntrepreneurshipDTO {
 
     public void setPhoneEntrepreneurship(String phoneEntrepreneurship) {
         this.phoneEntrepreneurship = phoneEntrepreneurship;
+    }
+
+    public Users getUser() {
+        return users;
+    }
+
+    public void setUser(Users users) {
+        this.users = users;
     }
 }

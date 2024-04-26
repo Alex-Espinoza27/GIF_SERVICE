@@ -1,6 +1,4 @@
-package pe.edu.upc.gifservice.dtos;
-
-import jakarta.persistence.Column;
+package pe.edu.upc.giftservice.dtos;
 
 public class CategoryDTO {
     private Long id;

@@ -16,16 +16,19 @@ public class Entrepreneurship {
     private String locationEntrepreneurship;
     @Column(name = "phoneEntrepreneurship", nullable = false)
     private String phoneEntrepreneurship;
+    @ManyToOne
+    @JoinColumn(name = "User_id")
+    private Users users;
 
     public Entrepreneurship() {
     }
-
-    public Entrepreneurship(Long id, String nameEntrepreneurship, String rucEntrepreneurship, String locationEntrepreneurship, String phoneEntrepreneurship) {
+    public Entrepreneurship(Long id, String nameEntrepreneurship, String rucEntrepreneurship, String locationEntrepreneurship, String phoneEntrepreneurship, Users users) {
         this.id = id;
         this.nameEntrepreneurship = nameEntrepreneurship;
         this.rucEntrepreneurship = rucEntrepreneurship;
         this.locationEntrepreneurship = locationEntrepreneurship;
         this.phoneEntrepreneurship = phoneEntrepreneurship;
+        this.users = users;
     }
 
     public Long getId() {
@@ -66,5 +69,13 @@ public class Entrepreneurship {
 
     public void setPhoneEntrepreneurship(String phoneEntrepreneurship) {
         this.phoneEntrepreneurship = phoneEntrepreneurship;
+    }
+
+    public Users getUser() {
+        return users;
+    }
+
+    public void setUser(Users users) {
+        this.users = users;
     }
 }

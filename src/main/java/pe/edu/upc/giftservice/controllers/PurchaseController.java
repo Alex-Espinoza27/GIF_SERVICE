@@ -5,15 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.giftservice.dtos.PurchaseDTO;
+import pe.edu.upc.giftservice.dtos.QuantityByTypeDeliveryDTO;
 import pe.edu.upc.giftservice.entities.Purchase;
 import pe.edu.upc.giftservice.servicesinterfaces.IPurchaseService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Purchase")
-@PreAuthorize("hasAnyAuthority('USUARIO','EMPRENDEDOR', 'ADMIN')")
+@PreAuthorize("hasAnyAuthority('USUARIO','EMPRENDIMIENTO', 'ADMIN')")
 public class PurchaseController {
     @Autowired
     private IPurchaseService pS;
@@ -38,5 +40,20 @@ public class PurchaseController {
     public void delete(@PathVariable("id") Integer id) {
         pS.delete(id);
     }
-    
+
+
+    @GetMapping("CantidadDeTipoDeDeliveryDelTotalDeCompras")
+    @PreAuthorize("hasAnyAuthority('USUARIO','EMPRENDIMIENTO', 'ADMIN')")
+    public List<QuantityByTypeDeliveryDTO> cantidadPorTipoDeEntrega(){
+        List<String[]> filaLista= pS.QuantityByTypeDelivery();
+        List<QuantityByTypeDeliveryDTO> dtoLista=new ArrayList<>();
+        for(String [] columna:filaLista){
+            QuantityByTypeDeliveryDTO dto=new QuantityByTypeDeliveryDTO();
+            dto.setTotalpurchase(Integer.parseInt(columna[0]));
+            dto.setNameTypeDelivery(columna[1]);
+            dto.setQuantityTypeDelivery(Integer.parseInt(columna[2]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
 }

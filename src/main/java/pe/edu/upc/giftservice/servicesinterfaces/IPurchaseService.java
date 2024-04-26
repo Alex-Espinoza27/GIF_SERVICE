@@ -11,5 +11,5 @@ public interface IPurchaseService {
 
     public void delete(int id);
 
-
+    public List<String[]> QuantityByTypeDelivery ();
 }

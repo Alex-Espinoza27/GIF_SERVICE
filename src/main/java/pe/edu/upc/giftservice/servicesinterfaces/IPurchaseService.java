@@ -8,6 +8,7 @@ public interface IPurchaseService {
     public void insert(Purchase pt);
 
     public List<Purchase> list();
+    public void update(Purchase purchase);
 
     public void delete(int id);
 

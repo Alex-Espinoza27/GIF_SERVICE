@@ -39,12 +39,7 @@ public class PurchaseDetailController {
         pdS.delete(id);
     }
 
-    @PutMapping
-    public void update(@RequestBody PurchaseDetailDTO PurchaseDetailDTO) {
-        ModelMapper m = new ModelMapper();
-        PurchaseDetail e = m.map(PurchaseDetailDTO, PurchaseDetail.class);
-        pdS.update(e);
-    }
+
 
     @GetMapping("/{id}")
     public PurchaseDetailDTO listById(@PathVariable("id") int id) {

@@ -12,5 +12,5 @@ public interface IPurchaseDetailService {
     public void delete(int id);
     public List<String[]> quantityPurchaseByEntrepreneurship();
     public List<String[]> TotalAmountByEntrepreneurship();
-
+    public List<String[]> RankingCategoryPurchase(Long entrepreneurships_id);
 }

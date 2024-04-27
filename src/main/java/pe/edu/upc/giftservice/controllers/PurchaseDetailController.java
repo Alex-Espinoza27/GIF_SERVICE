@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.giftservice.dtos.RankingCategoryPurchaseDTO;
 import pe.edu.upc.giftservice.dtos.PurchaseByEntrepreneurshipDTO;
 import pe.edu.upc.giftservice.dtos.PurchaseDetailDTO;
 import pe.edu.upc.giftservice.dtos.TotalAmountByEntrepreneurshipDTO;
@@ -87,5 +88,19 @@ public class PurchaseDetailController {
         }
         return dtoLista;
     }
+
+    @GetMapping("/Ranking_Category_purchase")
+    public List<RankingCategoryPurchaseDTO> RankingCategoryPurchase(@RequestParam  Long id){
+        List<String[]> filaLista= pdS.RankingCategoryPurchase(id);
+        List<RankingCategoryPurchaseDTO> dtoLista=new ArrayList<>();
+        for(String [] columna:filaLista){
+            RankingCategoryPurchaseDTO dto=new RankingCategoryPurchaseDTO();
+            dto.setNameCategory(columna[0]);
+            dto.setTotal(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
 
 }

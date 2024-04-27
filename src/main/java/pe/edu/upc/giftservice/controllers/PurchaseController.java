@@ -5,9 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.giftservice.dtos.PurchaseDTO;
+import pe.edu.upc.giftservice.dtos.RankingPaymentTypesUsedDTO;
+import pe.edu.upc.giftservice.dtos.TotalAmountByEntrepreneurshipDTO;
 import pe.edu.upc.giftservice.entities.Purchase;
 import pe.edu.upc.giftservice.servicesinterfaces.IPurchaseService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,5 +43,18 @@ public class PurchaseController {
     public void delete(@PathVariable("id") Integer id) {
         pS.delete(id);
     }
-    
+
+    @GetMapping("/Ranking_payment_type_used")
+    public List<RankingPaymentTypesUsedDTO> RankingPaymentTypesUsed(@RequestParam Long id){
+        List<String[]> filaLista= pS.RankingPaymentTypesUsed(id);
+        List<RankingPaymentTypesUsedDTO> dtoLista=new ArrayList<>();
+        for(String [] columna:filaLista){
+            RankingPaymentTypesUsedDTO dto=new RankingPaymentTypesUsedDTO();
+            dto.setNamePaymentType(columna[0]);
+            dto.setTotal(Integer.parseInt(columna[1]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
+
 }

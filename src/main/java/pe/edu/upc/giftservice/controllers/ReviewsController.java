@@ -44,7 +44,7 @@ public class ReviewsController {
 
 
     @GetMapping("/TotalPuntoPorProdductoyEmprendimiento")
-    public int TotalPuntosPorProductoYEmprendimiento(@RequestParam int product_id, int entrepreneurship_id){
+    public int TotalPuntosPorProductoYEmprendimiento(@RequestParam int product_id,@RequestParam int entrepreneurship_id){
         return rS.TotalScoreByProduct(product_id,entrepreneurship_id);
     }
 }
